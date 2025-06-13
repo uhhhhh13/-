@@ -1,15 +1,15 @@
--- Whitelist table containing up to 10 Roblox User IDs (you can add more)
+-- Whitelist table with 10 slots for Roblox User IDs (add IDs manually as needed)
 local Whitelist = {
-    3648715092, -- Replace with actual Roblox User ID
-    987654321, -- Replace with actual Roblox User ID
-    111222333, -- Replace with actual Roblox User ID
-    444555666, -- Replace with actual Roblox User ID
-    777888999, -- Replace with actual Roblox User ID
-    112233445, -- Replace with actual Roblox User ID
-    556677889, -- Replace with actual Roblox User ID
-    998877665, -- Replace with actual Roblox User ID
-    123123123, -- Replace with actual Roblox User ID
-    456456456  -- Replace with actual Roblox User ID
+    3648715092, -- Slot 1
+    , -- Slot 2
+    , -- Slot 3
+    , -- Slot 4
+    , -- Slot 5
+    , -- Slot 6
+    , -- Slot 7
+    , -- Slot 8
+    , -- Slot 9
+    , -- Slot 10
 }
 
 -- Function to check if a user is whitelisted
@@ -27,14 +27,13 @@ local function showLoadingBar()
     local steps = {"[          ]", "[==        ]", "[====      ]", "[======    ]", "[==========]"}
     for i, step in ipairs(steps) do
         print("Loading Script Data: " .. step)
-        task.wait(1) -- Replace deprecated wait() with task.wait()
+        task.wait(1)
     end
-    print("\27[32mLoading Script Data: [==========] Complete\27[0m") -- Green text for completion
+    print("\27[32mLoading Script Data: [==========] Complete\27[0m")
 end
 
--- Function to execute the loadstring script for whitelisted users
+-- Function to execute the loadstring script for the whitelisted user
 local function executeLoadstring(player)
-    -- Replace with your actual loadstring URL or code
     local loadstringCode = [[
         -- Add your loadstring script logic here
         -- Example: loadstring(game:HttpGet("https://raw.githubusercontent.com/uhhhhh13/-/refs/heads/main/%E2%96%AA%EF%B8%8E"))()
@@ -47,7 +46,7 @@ local function executeLoadstring(player)
     
     if not success then
         warn("Error executing loadstring for " .. player.Name .. " | Error: " .. tostring(result))
-        return false -- Exit if execution fails
+        return false
     end
     return true
 end
@@ -58,7 +57,7 @@ game.Players.PlayerAdded:Connect(function(player)
     
     if isWhitelisted(userId) then
         showLoadingBar()
-        task.wait(5) -- Wait 5 seconds after loading bar
+        task.wait(5)
         if not executeLoadstring(player) then
             player:Kick("An error occurred while loading your script. Contact an administrator.")
         end
