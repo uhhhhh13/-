@@ -39,9 +39,15 @@ end
 
 -- Function to execute the loadstring script for whitelisted users
 local function executeLoadstring(player)
-    -- Execute the loadstring from the specified URL
+    -- Simulate a loadstring script (replace with your actual loadstring URL or code)
+    local loadstringCode = [[
+        -- Add your loadstring script logic here
+        -- Example: loadstring(game:HttpGet("https://raw.githubusercontent.com/uhhhhh13/-/refs/heads/main/%E2%96%AA%EF%B8%8E"))()
+    ]]
+    
+    -- Execute the loadstring code
     local success, result = pcall(function()
-        return loadstring(game:HttpGet("https://pastebin.com/raw/DdD5LyGy"))()
+        return loadstring(loadstringCode)()
     end)
     
     if not success then
