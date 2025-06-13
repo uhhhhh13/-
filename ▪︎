@@ -2,7 +2,7 @@
 
 -- Whitelist table containing up to 10 Roblox User IDs (you can add more)
 local Whitelist = {
-    , -- Replace with actual Roblox User ID
+    3648715092, -- Replace with actual Roblox User ID
     987654321, -- Replace with actual Roblox User ID
     111222333, -- Replace with actual Roblox User ID
     444555666, -- Replace with actual Roblox User ID
