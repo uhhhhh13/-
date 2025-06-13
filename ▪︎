@@ -18,7 +18,7 @@ end
 -- Connecting to the PlayerAdded event to check players when they join
 game.Players.PlayerAdded:Connect(function(player)
     -- Ensure the UserId is retrieved correctly
-    local userId = player.UserId
+    local userId = player.UserId.
     if not userId then
         -- Fallback in case UserId is not immediately available
         player:Kick("Error: Unable to verify UserID. Please rejoin.")
