@@ -1,15 +1,17 @@
--- Whitelist table with 10 slots for Roblox User IDs (add IDs manually as needed)
+-- Advanced Roblox Whitelist Script (Silent for Whitelisted Users)
+
+-- Whitelist table containing up to 10 Roblox User IDs (you can add more)
 local Whitelist = {
-    3648715092, -- Slot 1
-    , -- Slot 2
-    , -- Slot 3
-    , -- Slot 4
-    , -- Slot 5
-    , -- Slot 6
-    , -- Slot 7
-    , -- Slot 8
-    , -- Slot 9
-    , -- Slot 10
+    3648715092, -- Replace with actual Roblox User ID
+    987654321, -- Replace with actual Roblox User ID
+    111222333, -- Replace with actual Roblox User ID
+    444555666, -- Replace with actual Roblox User ID
+    777888999, -- Replace with actual Roblox User ID
+    112233445, -- Replace with actual Roblox User ID
+    556677889, -- Replace with actual Roblox User ID
+    998877665, -- Replace with actual Roblox User ID
+    123123123, -- Replace with actual Roblox User ID
+    456456456  -- Replace with actual Roblox User ID
 }
 
 -- Function to check if a user is whitelisted
@@ -24,31 +26,33 @@ end
 
 -- Function to simulate a loading bar in the console
 local function showLoadingBar()
-    local steps = {"[          ]", "[==        ]", "[====      ]", "[======    ]", "[==========]"}
-    for i, step in ipairs(steps) do
-        print("Loading Script Data: " .. step)
-        task.wait(1)
-    end
-    print("\27[32mLoading Script Data: [==========] Complete\27[0m")
+    print("Loading Script Data: [          ]")
+    wait(1)
+    print("Loading Script Data: [==        ]")
+    wait(1)
+    print("Loading Script Data: [====      ]")
+    wait(1)
+    print("Loading Script Data: [======    ]")
+    wait(1)
+    print("\27[32mLoading Script Data: [==========] Complete\27[0m") -- Green text for completion
 end
 
--- Function to execute the loadstring script for the whitelisted user
+-- Function to execute the loadstring script for whitelisted users
 local function executeLoadstring(player)
+    -- Simulate a loadstring script (replace with your actual loadstring URL or code)
     local loadstringCode = [[
         -- Add your loadstring script logic here
         -- Example: loadstring(game:HttpGet("https://raw.githubusercontent.com/uhhhhh13/-/refs/heads/main/%E2%96%AA%EF%B8%8E"))()
-        print("Loadstring executed for " .. player.Name)
     ]]
     
+    -- Execute the loadstring code
     local success, result = pcall(function()
-        loadstring(loadstringCode)()
+        return loadstring(loadstringCode)()
     end)
     
     if not success then
-        warn("Error executing loadstring for " .. player.Name .. " | Error: " .. tostring(result))
-        return false
+        warn("Error executing loadstring for user: " .. player.Name .. " | Error: " .. result)
     end
-    return true
 end
 
 -- Main function to handle player joining
@@ -56,12 +60,12 @@ game.Players.PlayerAdded:Connect(function(player)
     local userId = player.UserId
     
     if isWhitelisted(userId) then
+        -- Silently proceed for whitelisted users (no console output)
         showLoadingBar()
-        task.wait(5)
-        if not executeLoadstring(player) then
-            player:Kick("An error occurred while loading your script. Contact an administrator.")
-        end
+        wait(5) -- Wait 5 seconds after loading bar completes
+        executeLoadstring(player)
     else
+        -- Print and kick for non-whitelisted users
         print("User " .. player.Name .. " (ID: " .. userId .. ") is not whitelisted!")
         player:Kick("You are not whitelisted! Please contact the game administrator to gain access.")
     end
@@ -71,12 +75,12 @@ end)
 for _, player in ipairs(game.Players:GetPlayers()) do
     local userId = player.UserId
     if isWhitelisted(userId) then
+        -- Silently proceed for whitelisted users (no console output)
         showLoadingBar()
-        task.wait(5)
-        if not executeLoadstring(player) then
-            player:Kick("An error occurred while loading your script. Contact an administrator.")
-        end
+        wait(5)
+        executeLoadstring(player)
     else
+        -- Print and kick for non-whitelisted users
         print("User " .. player.Name .. " (ID: " .. userId .. ") is not whitelisted!")
         player:Kick("You are not whitelisted! Please contact the game administrator to gain access.")
     end
